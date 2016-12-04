@@ -1,0 +1,42 @@
+{
+  "users": [
+    {{#repeat 100000}}
+    {
+      "id": {{@index}},
+      "name": "{{firstName}} {{lastName}}",
+      "work": "{{company}}",
+      "email": "{{email}}",
+      "dob": "{{date '1900' '2000' 'DD/MM/YYYY'}}",
+      "address": "{{int 1 100}} {{street}}",
+      "city": "{{city}}",
+      "optedin": {{boolean}},
+      "price": "${{int 0 99999 '0,0'}}",
+      "group": "{{int 0 10}}",
+      "A": "{{int 0 5}}",
+      "B": "{{int 5 10}}",
+      "C": "{{int 0 10}}",
+      "D": "{{int 0 20}}",
+      "country": "{{country}}", 
+      "city": "{{city}}",
+      "title": "{{title}}"
+    }
+    {{/repeat}}
+  ]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

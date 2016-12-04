@@ -1,0 +1,59 @@
+{
+  "type" : "index_hadoop",
+  "spec" : {
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "jsondata/out_gz_small.json"
+      }
+    },
+    "dataSchema" : {
+      "dataSource" : "out",
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "day",
+        "queryGranularity" : "none",
+        "intervals" : ["2016-12-03/2016-12-05"]
+      },
+      "parser" : {
+        "type" : "string",
+        "parseSpec" : {
+          "format" : "json",
+          "dimensionsSpec" : {
+            "dimensions" : [
+              "A",
+              "B",
+              "C",
+              "D",
+              "group",
+              "title",
+              "country",
+              "optedin",
+              "price"
+            ]
+          },
+          "timestampSpec" : {
+            "format" : "auto",
+            "missingValue": "2016-12-04T17:51:43+00:00",
+            "column" : "timestamp"
+          }
+        }
+      },
+      "metricsSpec" : [
+        {
+          "name" : "count",
+          "type" : "count"
+        }
+      ]
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000
+      },
+      "jobProperties" : {}
+    }
+  }
+}
